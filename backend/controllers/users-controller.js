@@ -1,5 +1,4 @@
 const passport = require('passport');
-const bcrypt = require('bcrypt');
 
 // models
 const User = require('../models/User');
@@ -14,8 +13,6 @@ const allUsers = async (req, res) => {
 }
 
 const register = async (req, res) => {
-  const hash = await bcrypt.hash(req.body.password, 10) 
-  req.body.password = hash
   let user = new User(req.body)
   await user.save() 
   req.login(user, (err) => {
@@ -60,7 +57,7 @@ const seedUsers = async (req, res) => {
     await User.insertMany([
       {
         username: "Piggly Wiggly",
-        password: await bcrypt.hash("piggly", 16),
+        password: "piggly",
         email: "piggly@wiggly.com"
       }
     ])

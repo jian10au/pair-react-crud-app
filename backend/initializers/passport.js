@@ -1,12 +1,12 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
+const LocalStrategy = require('passport-local').Strategy
 
 // models
 const User = require('../models/User');
 
 const validPassword = async (password, hash) => {
-  return await bcrypt.compare(password, hash)
+
+  return (password === hash)
 }
 
 passport.use(new LocalStrategy(
