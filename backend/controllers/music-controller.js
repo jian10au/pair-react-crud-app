@@ -1,5 +1,5 @@
 const index = (req, res) => {
-  res.send('api works')
+  res.send('This is music controller')
 }
 
 module.exports = {
