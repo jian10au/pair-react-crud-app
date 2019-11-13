@@ -2,11 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const cors = require('cors');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000
-
 const app = express();
+app.use(cors())
 
 // mongoose
 const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true }
